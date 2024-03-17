@@ -3,9 +3,10 @@ from selenium.webdriver.common.by import By
 import conftest
 
 @pytest.mark.usefixtures("setup_teardown")
+@pytest.mark.cart
 @pytest.mark.smoke
-class TestMakePurchase:
-    def test_make_purchase(self):
+class TestAddProductToCart:
+    def test_add_product_cart(self):
         driver = conftest.driver
         # Taking Login
         driver.find_element(By.ID, "user-name").send_keys("standard_user")
@@ -34,20 +35,4 @@ class TestMakePurchase:
         assert (driver.find_element(By.XPATH, "//*[@class='inventory_item_name' and text()='Sauce Labs Backpack']")
                 .is_displayed())
         assert (driver.find_element(By.XPATH, "//*[@class='inventory_item_name' and text()='Sauce Labs Bike Light']")
-                .is_displayed())
-
-        # Check-out all cart item
-        driver.find_element(By.ID, "checkout").click()
-
-        # Fill purchase data
-        driver.find_element(By.ID, "first-name").send_keys("João")
-        driver.find_element(By.ID, "last-name").send_keys("Denison")
-        driver.find_element(By.ID, "postal-code").send_keys("63452-222")
-        driver.find_element(By.ID, "continue").click()
-
-        # Checkout: Overview | Finalizing purchase
-        driver.find_element(By.ID, "finish").click()
-
-        # Checking purchase order
-        assert (driver.find_element(By.XPATH, "//*[@class='complete-header' and text()='Thank you for your order!']")
                 .is_displayed())
