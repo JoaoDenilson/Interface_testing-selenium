@@ -5,20 +5,28 @@ Testing web application interfaces using selenium and python.
 
 
 Essential commands used in the project
-Creat virtual enviromnet
+
+#Creat virtual enviromnet
 
 python -m venv venv
-Activate venv 
+
+#Activate venv 
 
 venv\Scripts\Activate.ps1
-Install Selenium
+
+
+#Install Selenium
+
 pip install selenium
 
-Install pytest
+#Install pytest
+
 pip instal  -U pytest
 
-Run the tests with Pytest
+#Run the tests with Pytest
+
 pytest
 
-Run 1 specific test
+#Run 1 specific test
+
 pytest diretorio/arquivo.py
